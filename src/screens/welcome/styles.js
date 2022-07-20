@@ -8,8 +8,8 @@ export default StyleSheet.create({
     imgBg: {
         flex: 1,
     },
-    bgClr: {
-        backgroundColor: 'rgba(0,0,0,0.2)',
+    bgClrWel: {
+        backgroundColor: 'rgba(0,0,0,0.5)',
         opacity: 10,
         flex: 1,
         justifyContent: 'space-between',
@@ -27,6 +27,12 @@ export default StyleSheet.create({
     btnContainer: {
         marginHorizontal: 30
     },
+    body: {
+        fontFamily: 'Poppins-Reguler',
+        fontSize: 20,
+        color: '#FFFFFF',
+        textAlign: 'center'
+    },
     button: {
         backgroundColor: '#FFBA33',
         width: '100%',
@@ -42,5 +48,21 @@ export default StyleSheet.create({
         fontFamily: 'Poppins-SemiBold',
         fontSize: 17,
         color: '#6A4029'
+    },
+    buttonCreate: {
+        backgroundColor: '#6A4029',
+        width: '100%',
+        height: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        marginTop: '5%',
+    },
+    buttonTextCreate: {
+        textAlign: 'center',
+        fontFamily: 'Poppins-SemiBold',
+        fontSize: 17,
+        color: '#FFFFFF'
     },
 });
