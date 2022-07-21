@@ -15,7 +15,7 @@ const authReducer = (state = initialState, action) => {
         case loginString + PENDING:
             return {
                 ...state,
-                // isSuccess: null,
+                isSuccess: null,
                 errorMsg: null,
                 isLoading: true
             }

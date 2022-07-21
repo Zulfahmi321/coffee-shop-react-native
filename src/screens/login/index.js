@@ -19,6 +19,13 @@ const Login = ({ navigation }) => {
     const handlerLogin = () => {
         const body = { email, password };
         dispatch(loginAction(body))
+            .then((result) => {
+                console.log(result);
+                navigation.navigate('home')
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
     const showToastSuccess = () => {
         Toast.show({
@@ -35,7 +42,6 @@ const Login = ({ navigation }) => {
     useEffect(() => {
         if (isSuccess === true) {
             showToastSuccess()
-            navigation.navigate('home')
         }
         if (isSuccess === false) {
             showToastError()
@@ -57,7 +63,7 @@ const Login = ({ navigation }) => {
                     <Pressable onPress={() => navigation.navigate('forgot')}>
                         <Text style={styles.forgot}>Forgot password?</Text>
                     </Pressable>
-                    <Button buttonStyle={styles.loginBtn} loading={isLoading} onPress={handlerLogin}>
+                    <Button buttonStyle={styles.loginBtn} onPress={handlerLogin}>
                         <Text style={styles.loginText}>Login</Text>
                     </Button>
                     <View style={styles.info}>

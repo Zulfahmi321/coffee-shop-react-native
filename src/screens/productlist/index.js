@@ -71,25 +71,40 @@ const ProductList = ({ navigation, ...props }) => {
             <View style={styles.searchContainer}>
                 <Icon name='search' size={20} color='#9F9F9F' />
                 <TextInput style={styles.searchInput} placeholder={'Search'} />
-                <Icon name='arrow-up-outline' size={20} onPress={() => setOrder('desc')} />
-                <Icon name='arrow-down-outline' size={20} onPress={() => setOrder('asc')} />
+                <Icon name='arrow-up-outline' size={20} onPress={() => setOrder('asc')} />
+                <Icon name='arrow-down-outline' size={20} onPress={() => setOrder('desc')} />
             </View>
             <View style={styles.containerProduct}>
                 <ScrollView horizontal={true} style={styles.scrollViewH} showsHorizontalScrollIndicator={false}>
                     <Text style={menu === 'all' ? styles.categoryTextAct : styles.categoryText}
-                        onPress={() => setMenu('all')}
+                        onPress={() => {
+                            setMenu('all'),
+                                setPage(1)
+                        }}
                     >All</Text>
                     <Text style={menu === 'coffee' ? styles.categoryTextAct : styles.categoryText}
-                        onPress={() => setMenu('coffee')}
+                        onPress={() => {
+                            setMenu('coffee'),
+                                setPage(1)
+                        }}
                     >Coffee</Text>
                     <Text style={menu === 'snack' ? styles.categoryTextAct : styles.categoryText}
-                        onPress={() => setMenu('snack')}
+                        onPress={() => {
+                            setMenu('snack'),
+                                setPage(1)
+                        }}
                     >Snack</Text>
                     <Text style={menu === 'tea' ? styles.categoryTextAct : styles.categoryText}
-                        onPress={() => setMenu('tea')}
+                        onPress={() => {
+                            setMenu('tea'),
+                                setPage(1)
+                        }}
                     >Non Coffee</Text>
                     <Text style={menu === 'food' ? styles.categoryTextAct : styles.categoryText}
-                        onPress={() => setMenu('food')}
+                        onPress={() => {
+                            setMenu('food'),
+                                setPage(1)
+                        }}
                     >Food</Text>
                 </ScrollView>
                 <View style={styles.sortOrderContainer}>
