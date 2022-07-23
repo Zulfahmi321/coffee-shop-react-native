@@ -1,34 +1,34 @@
 import axios from "axios";
-import { REACT_APP_BE } from '@env'
+import { REACT_APP_BE, URL_DEPLOY } from '@env'
 
 export const doLogin = (body) => {
-    return axios.post(`${REACT_APP_BE}/auth`, body)
+    return axios.post(`${URL_DEPLOY}/auth`, body)
 };
 export const doRegister = (body) => {
-    return axios.post(`${REACT_APP_BE}/auth/new`, body)
+    return axios.post(`${URL_DEPLOY}/auth/new`, body)
 };
 export const getProduct = () => {
-    return axios.get(`${REACT_APP_BE}/product?limit=5`)
+    return axios.get(`${URL_DEPLOY}/product?limit=5`)
 };
 export const getListProduct = () => {
-    return axios.get(`${REACT_APP_BE}/product`)
+    return axios.get(`${URL_DEPLOY}/product`)
 };
 export const getProductFav = () => {
-    return axios.get(`${REACT_APP_BE}/product/best`)
+    return axios.get(`${URL_DEPLOY}/product/best`)
 };
 export const getProfile = (token) => {
     const config = { headers: { Authorization: `Bearer ${token}` } }
-    return axios.get(`${REACT_APP_BE}/user`, config)
+    return axios.get(`${URL_DEPLOY}/user`, config)
 };
 export const addTransaction = (body, config) => {
-    return axios.post(`${REACT_APP_BE}/transaction`, body, config)
+    return axios.post(`${URL_DEPLOY}/transaction`, body, config)
 };
 export const showTransaction = (token) => {
     const config = { headers: { Authorization: `Bearer ${token}` } }
-    return axios.get(`${REACT_APP_BE}/transaction`, config)
+    return axios.get(`${URL_DEPLOY}/transaction`, config)
 };
-export const editProfile = (body, config) => {
-    return axios.patch(`${REACT_APP_BE}/user`, body, config)
+export const editProfile = (newBody, config) => {
+    return axios.patch(`${URL_DEPLOY}/user`, newBody, config)
 
 }
 

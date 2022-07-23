@@ -1,6 +1,5 @@
 import { View, Text, ScrollView, Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
-import { REACT_APP_BE } from '@env'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { useSelector, useDispatch } from 'react-redux';

@@ -26,6 +26,7 @@ const EditProfile = ({ navigation }) => {
     // const [date_of_birth, setDateOfBirth] = useState('');
     // const [address, setAddress] = useState('');
     const [body, setBody] = useState({
+        profile_picture: null,
         username: '',
         gender: '',
         mobile_number: '',
@@ -56,9 +57,15 @@ const EditProfile = ({ navigation }) => {
     const handlerEditProfile = async () => {
         try {
             setIsLoading(true)
-            const config = { headers: { Authorization: `Bearer ${token}` } }
+            let newBody = new FormData()
+            newBody.append('profile_picture', profile_picture);
+            newBody.append('mobile_number', username);
+            newBody.append('gender', gender);
+            newBody.append('address', address);
+            newBody.append('date_of_birth', date_of_birth);
+            const config = { headers: { Authorization: `Bearer ${token}`, "content-type": "multipart/form-data" } }
             // const body = { username, gender, mobile_number, date_of_birth, address }
-            const response = await editProfile(body, config)
+            const response = await editProfile(newBody, config)
             console.log(response);
             setTimeout(() => {
                 setIsLoading(false)

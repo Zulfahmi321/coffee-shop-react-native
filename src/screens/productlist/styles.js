@@ -84,5 +84,9 @@ export default StyleSheet.create({
     },
     containerProduct: {
         marginBottom: 320
-    }
+    },
+    loaderStyle: {
+        marginVertical: 20,
+        alignItems: "center",
+    },
 })

@@ -20,6 +20,7 @@ import History from './screens/history';
 import Profile from './screens/profile';
 import EditPassword from './screens/editpassword';
 import EditProfile from './screens/editprofile';
+import Splash from './screens/splash';
 
 const Router = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -28,10 +29,11 @@ const Router = () => {
       <ReduxProvider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <StatusBar barStyle={"dark-content"} />
-          <Navigator initialRouteName='landing'
+          <Navigator initialRouteName='splash'
             screenOptions={{
               headerShown: false
             }}>
+            <Screen name="splash" component={Splash} />
             <Screen name="landing" component={Landing} />
             <Screen name="welcome" component={Welcome} />
             <Screen name="login" component={Login} />

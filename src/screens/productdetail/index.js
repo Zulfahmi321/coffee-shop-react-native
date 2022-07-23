@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 import ProdDef from '../../assets/img/coldbrew.png'
 import { Button } from '@rneui/themed'
-import { REACT_APP_BE } from '@env'
+import { REACT_APP_BE, URL_DEPLOY } from '@env'
 
 import styles from './styles'
 import axios from 'axios';
@@ -22,7 +22,7 @@ const ProductDetail = ({ navigation, route }) => {
         try {
             setIsLoading(true)
             const id = route.params.id
-            const response = await axios.get(`${REACT_APP_BE}/product/${id}`)
+            const response = await axios.get(`${URL_DEPLOY}/product/${id}`)
             // console.log(response.data.data.data[0])
             setProduct(response.data.data.data[0])
             setIsLoading(false)
