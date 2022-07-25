@@ -6,8 +6,9 @@ import styles from './styles'
 import { showTransaction } from '../../modules/axios'
 import { useSelector } from 'react-redux'
 import { currencyFormatter } from '../../helpers/formatter'
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const History = () => {
+const History = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [transaction, setTransaction] = useState([])
     const [isDelete, setIsDelete] = useState(false)
@@ -34,6 +35,7 @@ const History = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Order History</Text>
+            <Icon name='home-outline' size={30} onPress={() => navigation.replace('home')} />
             {isLoading ?
                 <ActivityIndicator size={'large'} />
                 :

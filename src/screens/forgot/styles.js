@@ -25,7 +25,7 @@ export default StyleSheet.create({
         color: '#000000',
         textAlign: 'center'
     },
-    btnContainer: {
+    botContainer: {
         flex: 1,
         display: 'flex',
         justifyContent: 'center',

@@ -93,7 +93,7 @@ const ProductList = ({ navigation, ...props }) => {
         axios
             .get(url)
             .then(response => {
-                console.log(response.data.data);
+                // console.log(response.data.data);
                 setListProduct(response.data.data)
             })
             .catch((error) => {

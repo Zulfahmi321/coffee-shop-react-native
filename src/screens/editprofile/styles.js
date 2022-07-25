@@ -71,4 +71,35 @@ export default StyleSheet.create({
         padding: 13,
         borderRadius: 15,
     },
+    viewModal: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#CCC',
+        height: 200,
+        width: '80%',
+        borderRadius: 10,
+        marginTop: 200,
+        marginLeft: 40
+    },
+    wrapperInModal: {
+        textAlign: 'center',
+        flexDirection: 'row',
+    },
+    chooseBtn: {
+        width: 50,
+        height: 50,
+        backgroundColor: '#979bad',
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10
+    },
+    btnCancel: {
+        width: 100,
+        height: 40,
+        backgroundColor: '#6A4029',
+        borderRadius: 20
+    }
+
+
 });

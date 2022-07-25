@@ -1,9 +1,10 @@
-import { View, Text, Image, Pressable, FlatList, ActivityIndicator } from 'react-native'
+import { View, Text, Image, Pressable, FlatList, ActivityIndicator, Modal } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import DrawerLayout from 'react-native-gesture-handler/DrawerLayout';
 import ProfDef from '../../assets/img/profdef.png'
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import { Button } from '@rneui/themed'
 import styles from './styles';
 import Header from '../../components/Header';
 import CardProduct from '../../components/CardProduct';
@@ -12,6 +13,7 @@ import { currencyFormatter } from '../../helpers/formatter';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDataAction } from '../../redux/actionCreators/userdata';
 import { logoutAction } from '../../redux/actionCreators/auth';
+import { color } from '@rneui/base';
 
 const Home = ({ navigation, ...props }) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -20,8 +22,19 @@ const Home = ({ navigation, ...props }) => {
     const dispatch = useDispatch()
     const { token } = useSelector(state => state.auth)
     const { user } = useSelector(state => state.user)
+    const [statusModal, setStatusModal] = useState(false)
 
     const handlerDrawer = () => drawerRef.current.openDrawer()
+
+    const handlerToAddProduct = () => {
+        setStatusModal(false)
+        navigation.navigate('addproduct')
+    }
+
+    const handlerToAddPromo = () => {
+        setStatusModal(false)
+        navigation.navigate('addpromo')
+    }
 
     const handlerGetProduct = async () => {
         try {
@@ -93,12 +106,28 @@ const Home = ({ navigation, ...props }) => {
                 <Header handlerDrawer={handlerDrawer} navigation={navigation} />
                 <View style={styles.containerTitle}>
                     <Text style={styles.title}>A good coffee is a good day</Text>
-                    <Pressable onPress={() => navigation.navigate('favorite')}>
-                        <Text style={styles.favorite}>Favorite Products</Text>
-                    </Pressable>
-                    <Pressable onPress={() => navigation.navigate('productlist')}>
-                        <Text style={styles.favorite}>Show More</Text>
-                    </Pressable>
+                    {user.roles !== 'admin' ?
+                        <View style={styles.wrapperNavTitle}>
+                            <Pressable onPress={() => navigation.navigate('favorite')}>
+                                <Text style={styles.favorite}>Favorite Products</Text>
+                            </Pressable>
+                            <Pressable onPress={() => navigation.navigate('productlist')}>
+                                <Text style={styles.favorite}>Show More</Text>
+                            </Pressable>
+                        </View>
+                        :
+                        <View style={styles.wrapperNavTitle}>
+                            <Pressable onPress={() => navigation.navigate('favorite')}>
+                                <Text style={styles.favorite}>Favorite Products</Text>
+                            </Pressable>
+                            <Pressable onPress={() => navigation.navigate('productlist')}>
+                                <Text style={styles.favorite}>Show More</Text>
+                            </Pressable>
+                            <Pressable onPress={() => setStatusModal(true)}>
+                                <Icon name='add-circle-outline' size={30} />
+                            </Pressable>
+                        </View>
+                    }
                 </View>
                 {/* <ScrollView >
                     {product.length > 0 && product.map((item, idx) => (
@@ -114,6 +143,28 @@ const Home = ({ navigation, ...props }) => {
 
                 </View>
             </View>
+            <Modal
+                visible={statusModal}
+                transparent={true}
+                animationType='fade'
+            >
+                <View style={styles.viewModal}>
+                    <View style={styles.wrapperInModal}>
+                        <Pressable style={styles.chooseBtn} onPress={handlerToAddProduct}>
+                            <Text>New Product</Text>
+                        </Pressable>
+                        <Pressable style={styles.chooseBtn} onPress={handlerToAddPromo}>
+                            <Text>New Promo</Text>
+                        </Pressable>
+                    </View>
+                    <Button
+                        buttonStyle={styles.btnCancel}
+                        onPress={() => setStatusModal(false)}
+                    >
+                        <Icon name='close-circle-outline' size={30} color="#FFBA33" />
+                    </Button>
+                </View>
+            </Modal>
         </DrawerLayout>
     )
 }

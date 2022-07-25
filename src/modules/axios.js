@@ -29,6 +29,14 @@ export const showTransaction = (token) => {
 };
 export const editProfile = (newBody, config) => {
     return axios.patch(`${URL_DEPLOY}/user`, newBody, config)
-
-}
+};
+export const forgotPassword = (email) => {
+    return axios.get(`${URL_DEPLOY}/auth/forgotpassword/${email}`)
+};
+export const resetPassword = (body) => {
+    return axios.patch(`${URL_DEPLOY}/user/reset`, body)
+};
+export const changePassword = (body, config) => {
+    return axios.patch(`${URL_DEPLOY}/user/password`, body, config)
+};
 

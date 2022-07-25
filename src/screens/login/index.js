@@ -21,7 +21,7 @@ const Login = ({ navigation }) => {
         dispatch(loginAction(body))
             .then((result) => {
                 console.log(result);
-                navigation.navigate('home')
+                navigation.replace('home')
             })
             .catch((error) => {
                 console.log(error);

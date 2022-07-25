@@ -12,6 +12,7 @@ export default StyleSheet.create({
     img: {
         width: 70,
         height: 70,
+        marginRight: 10,
         borderRadius: 10,
         resizeMode: 'cover'
     },
@@ -41,12 +42,12 @@ export default StyleSheet.create({
     },
     item: {
         fontFamily: 'Poppins-Regular',
-        fontSize: 15,
+        fontSize: 12,
         color: '#000000'
     },
     price: {
         fontFamily: 'Poppins-Medium',
-        fontSize: 17,
+        fontSize: 12,
         color: '#000000'
     },
     methodCard: {

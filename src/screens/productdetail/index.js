@@ -8,13 +8,14 @@ import { REACT_APP_BE, URL_DEPLOY } from '@env'
 import styles from './styles'
 import axios from 'axios';
 import { currencyFormatter } from '../../helpers/formatter';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProductAction } from '../../redux/actionCreators/cart';
 
 const ProductDetail = ({ navigation, route }) => {
     const [product, setProduct] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [size, setSize] = useState('')
+    const { user } = useSelector(state => state.user)
 
     const dispatch = useDispatch()
 
@@ -86,9 +87,15 @@ const ProductDetail = ({ navigation, route }) => {
                 />
             </View>
             <View style={styles.deliveryInfo}>
-                <Button buttonStyle={styles.buttonCreate} loading={isLoading} onPress={handlerAddToCart}>
-                    <Text style={styles.buttonTextCreate}>Add To Cart</Text>
-                </Button>
+                {user.roles !== 'admin' ?
+                    <Button buttonStyle={styles.buttonCreate} loading={isLoading} onPress={handlerAddToCart}>
+                        <Text style={styles.buttonTextCreate}>Add To Cart</Text>
+                    </Button>
+                    :
+                    <Button buttonStyle={styles.buttonCreate} onPress={() => navigation.navigate('editproduct')}>
+                        <Text style={styles.buttonTextCreate}>Edit Product</Text>
+                    </Button>
+                }
             </View>
         </View>
     )

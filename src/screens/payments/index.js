@@ -6,8 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProdDef from '../../assets/img/coldbrew.png'
 import styles from './styles'
 import { currencyFormatter } from '../../helpers/formatter'
-import axios from 'axios';
+// import axios from 'axios';
 import { addTransaction } from '../../modules/axios';
+import { sendLocalNotification } from '../../helpers/notification';
 
 const Payments = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -35,6 +36,7 @@ const Payments = ({ navigation }) => {
             setIsLoading(false)
             setTimeout(() => {
                 navigation.navigate('history')
+                sendLocalNotification('PAYMENT SUCCESS', 'Anda Berhasil Melakukan Pembelian Produk ')
             }, 500);
         } catch (error) {
             console.log(error)

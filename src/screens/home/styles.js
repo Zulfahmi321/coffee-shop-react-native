@@ -54,6 +54,11 @@ export default StyleSheet.create({
         marginRight: 40,
         marginBottom: 20,
     },
+    wrapperNavTitle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
     title: {
         fontFamily: 'Poppins-Bold',
         fontSize: 40,
@@ -66,6 +71,34 @@ export default StyleSheet.create({
     containerProduct: {
         paddingBottom: 500
     },
-
-
+    viewModal: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 200,
+        width: '80%',
+        borderRadius: 10,
+        marginTop: 250,
+        marginLeft: 160
+    },
+    wrapperInModal: {
+        textAlign: 'center',
+        flexDirection: 'column',
+    },
+    chooseBtn: {
+        width: 100,
+        height: 50,
+        backgroundColor: '#FFBA33',
+        borderRadius: 50,
+        fontFamily: 'Poppins-Bold',
+        fontWeight: 700,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10
+    },
+    btnCancel: {
+        width: 50,
+        height: 50,
+        backgroundColor: '#6A4029',
+        borderRadius: 50
+    },
 })
