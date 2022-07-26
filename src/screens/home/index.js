@@ -73,10 +73,10 @@ const Home = ({ navigation, ...props }) => {
                         <Icon name='cart-outline' size={35} />
                         <Text style={styles.menuText}>Orders</Text>
                     </View>
-                    <View style={styles.menuList}>
-                        <Icon name='fast-food-outline' size={35} />
-                        <Text style={styles.menuText}>All menu</Text>
-                    </View>
+                    <Pressable style={styles.menuList} onPress={() => navigation.navigate('promo')}>
+                        <Icon name='pricetags-outline' size={35} />
+                        <Text style={styles.menuText}>All Promo</Text>
+                    </Pressable>
                     <View style={styles.menuList}>
                         <Icon name="settings-outline" size={35}></Icon>
                         <Text style={styles.menuText}>Privacy policy</Text>

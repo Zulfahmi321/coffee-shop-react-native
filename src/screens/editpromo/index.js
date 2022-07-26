@@ -9,7 +9,7 @@ import moment from 'moment';
 import { useSelector } from 'react-redux';
 import styles from './styles';
 import { addPromo } from '../../modules/axios';
-const AddPromo = ({ navigation }) => {
+const EditPromo = ({ navigation }) => {
     const [date, setDate] = useState(new Date());
     const { token } = useSelector(state => state.auth);
     const [open, setOpen] = useState(false);
@@ -24,10 +24,10 @@ const AddPromo = ({ navigation }) => {
         coupon: '',
     });
 
-    const handlerAddPromo = async () => {
+    const handlerEditPromo = async () => {
         try {
             setIsLoading(true)
-            const response = await addPromo(body)
+            const response = await editPromo(body)
             console.log(response)
             setTimeout(() => {
                 setIsLoading(false)
@@ -126,7 +126,7 @@ const AddPromo = ({ navigation }) => {
                     />
                 </View>
                 <Button
-                    onPress={handlerAddPromo}
+                    onPress={handlerEditPromo}
                     buttonStyle={styles.btnSave}
                     loading={isLoading}
                     color="#6A4029">
@@ -137,4 +137,4 @@ const AddPromo = ({ navigation }) => {
     )
 }
 
-export default AddPromo
+export default EditPromo

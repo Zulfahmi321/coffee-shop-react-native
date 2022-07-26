@@ -9,6 +9,7 @@ import { currencyFormatter } from '../../helpers/formatter'
 // import axios from 'axios';
 import { addTransaction } from '../../modules/axios';
 import { sendLocalNotification } from '../../helpers/notification';
+import { Button } from '@rneui/themed';
 
 const Payments = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -35,7 +36,7 @@ const Payments = ({ navigation }) => {
             console.log(response)
             setIsLoading(false)
             setTimeout(() => {
-                navigation.navigate('history')
+                navigation.replace('history')
                 sendLocalNotification('PAYMENT SUCCESS', 'Anda Berhasil Melakukan Pembelian Produk ')
             }, 500);
         } catch (error) {
@@ -77,9 +78,9 @@ const Payments = ({ navigation }) => {
                 <Text style={styles.subtitle}>Total</Text>
                 <Text style={styles.subtitle}>{currencyFormatter.format(cart.subtotal)}</Text>
             </View>
-            <Pressable style={styles.paymentBtn} onPress={paymentHandler}>
+            <Button loading={isLoading} buttonStyle={styles.paymentBtn} onPress={paymentHandler}>
                 <Text style={styles.paymentTxt}>Proceed payment</Text>
-            </Pressable>
+            </Button>
         </View>
     )
 }

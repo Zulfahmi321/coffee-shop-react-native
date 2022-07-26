@@ -16,6 +16,7 @@ const ProductDetail = ({ navigation, route }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [size, setSize] = useState('')
     const { user } = useSelector(state => state.user)
+    const [errMsg, setErrMsg] = useState('')
 
     const dispatch = useDispatch()
 
@@ -40,7 +41,7 @@ const ProductDetail = ({ navigation, route }) => {
     const handlerAddToCart = () => {
         const newProduct = { ...product, size }
         dispatch(addProductAction(newProduct))
-        navigation.navigate('cart')
+        navigation.replace('cart')
         // console.log(newProduct);
     }
 
@@ -92,7 +93,7 @@ const ProductDetail = ({ navigation, route }) => {
                         <Text style={styles.buttonTextCreate}>Add To Cart</Text>
                     </Button>
                     :
-                    <Button buttonStyle={styles.buttonCreate} onPress={() => navigation.navigate('editproduct')}>
+                    <Button buttonStyle={styles.buttonCreate} onPress={() => navigation.navigate('editproduct', { id: route.params.id })}>
                         <Text style={styles.buttonTextCreate}>Edit Product</Text>
                     </Button>
                 }

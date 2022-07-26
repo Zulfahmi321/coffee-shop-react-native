@@ -24,6 +24,8 @@ import Splash from './screens/splash';
 import AddProduct from './screens/addproduct';
 import AddPromo from './screens/addpromo';
 import EditProduct from './screens/editproduct';
+import EditPromo from './screens/editpromo';
+import Promo from './screens/promo';
 
 const Router = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -56,6 +58,8 @@ const Router = () => {
             <Screen name="addproduct" component={AddProduct} />
             <Screen name="editproduct" component={EditProduct} />
             <Screen name="addpromo" component={AddPromo} />
+            <Screen name="editpromo" component={EditPromo} />
+            <Screen name="promo" component={Promo} />
           </Navigator>
         </PersistGate>
       </ReduxProvider>

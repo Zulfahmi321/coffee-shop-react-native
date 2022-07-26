@@ -39,4 +39,17 @@ export const resetPassword = (body) => {
 export const changePassword = (body, config) => {
     return axios.patch(`${URL_DEPLOY}/user/password`, body, config)
 };
+export const addProduct = (newBody, config) => {
+    return axios.post(`${URL_DEPLOY}/product`, newBody, config)
+};
+export const editProduct = (id, newBody, config) => {
+    return axios.patch(`${URL_DEPLOY}/product/${id}`, newBody, config)
+};
+export const addPromo = (body, config) => {
+    return axios.post(`${URL_DEPLOY}/promos/new`, body, config)
+};
+export const getAllPromo = () => {
+    return axios.get(`${URL_DEPLOY}/promos/all`)
+};
+
 

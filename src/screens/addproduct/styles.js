@@ -1,6 +1,15 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+    wrapperHeader: {
+        flexDirection: 'row',
+        color: '#000000'
+    },
+    header: {
+        fontFamily: 'Poppins-Bold',
+        fontSize: 20,
+        marginLeft: 20
+    },
     containerNew: {
         flex: 1,
         backgroundColor: '#ECECEC',
@@ -46,7 +55,7 @@ export default StyleSheet.create({
     },
     btnSave: {
         // marginBottom: 30,
-        marginTop: 30,
+        marginTop: 5,
         padding: 13,
         borderRadius: 15,
         fontWeight: '900',
@@ -90,16 +99,48 @@ export default StyleSheet.create({
         marginTop: 20,
     },
     btnWrapperCategory: {
-        marginTop: 20,
+        margin: 5,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly',
     },
     btnCategory: {
         backgroundColor: '#6A4029',
         borderRadius: 10,
+        margin: 5
     },
     btnActive: {
         backgroundColor: '#FFBA33',
         borderRadius: 10,
+        margin: 5
     },
+    viewModal: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#CCC',
+        height: 200,
+        width: '80%',
+        borderRadius: 10,
+        marginTop: 200,
+        marginLeft: 40
+    },
+    wrapperInModal: {
+        textAlign: 'center',
+        flexDirection: 'row',
+    },
+    chooseBtn: {
+        width: 50,
+        height: 50,
+        backgroundColor: '#979bad',
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10
+    },
+    btnCancel: {
+        width: 100,
+        height: 40,
+        backgroundColor: '#6A4029',
+        borderRadius: 20
+    }
 });

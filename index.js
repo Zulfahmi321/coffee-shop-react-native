@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import App from './src';
 import { name as appName } from './app.json';
 import PushNotification from 'react-native-push-notification';
+import { sendLocalNotification } from './src/helpers/notification'
 
 PushNotification.configure({
     // (optional) Called when Token is generated (iOS and Android)
@@ -18,6 +19,7 @@ PushNotification.configure({
     // (required) Called when a remote is received or opened, or local notification is opened
     onNotification: function (notification) {
         console.log("NOTIFICATION:", notification);
+        sendLocalNotification(notification.message, notification.title)
 
         // process the notification
 
@@ -29,6 +31,7 @@ PushNotification.configure({
     onAction: function (notification) {
         console.log("ACTION:", notification.action);
         console.log("NOTIFICATION:", notification);
+
 
         // process the action
     },
@@ -56,7 +59,7 @@ PushNotification.configure({
      * - if you are not using remote notification or do not have Firebase installed, use this:
      *     requestPermissions: Platform.OS === 'ios'
      */
-    requestPermissions: Platform.OS === 'ios',
+    requestPermissions: true,
 });
 
 PushNotification.createChannel(

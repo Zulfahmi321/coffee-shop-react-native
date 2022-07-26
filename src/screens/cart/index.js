@@ -22,7 +22,7 @@ const Cart = ({ navigation }) => {
     const checkoutHandler = () => {
         const newProduct = { ...cart, subtotal, promo, quantity }
         dispatch(addProductAction(newProduct))
-        navigation.navigate('deliverymethods')
+        navigation.replace('deliverymethods')
     }
 
     return (

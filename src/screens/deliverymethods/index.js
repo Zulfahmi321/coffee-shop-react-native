@@ -16,7 +16,7 @@ const DeliveryMethods = ({ navigation }) => {
     const proceedHandler = () => {
         const newProduct = { ...cart, delivery }
         dispatch(addProductAction(newProduct))
-        navigation.navigate('payments')
+        navigation.replace('payments')
     }
     return (
         <View style={styles.container}>
@@ -26,7 +26,7 @@ const DeliveryMethods = ({ navigation }) => {
                 <Text style={styles.change}>change</Text>
             </View>
             <View style={styles.addressCard}>
-                <Text style={styles.address}>Iskandar Street</Text>
+                <Text style={styles.address}>{user.username}</Text>
                 <View style={styles.border}></View>
                 <Text style={styles.phone}>{user.address}</Text>
                 <View style={styles.border}></View>

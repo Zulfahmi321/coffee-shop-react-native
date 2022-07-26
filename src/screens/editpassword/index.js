@@ -8,12 +8,14 @@ import { useSelector } from 'react-redux'
 const EditPassword = ({ navigation }) => {
     const [newPassword, setNewPassword] = useState('')
     const [confPassword, setConfPassword] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const [errMsg, setErrMsg] = useState('')
 
     const { token } = useSelector(state => state.auth);
 
     const handlerChangePassword = async () => {
         try {
+            setIsLoading(true)
             if (newPassword !== confPassword) {
                 setErrMsg("Password & Password Confirm does not match")
                 console.log(errMsg);
@@ -23,9 +25,13 @@ const EditPassword = ({ navigation }) => {
             const config = { headers: { Authorization: `Bearer ${token}` } }
             const response = await changePassword(body, config)
             console.log(response);
-            navigation.navigate('home')
+            setTimeout(() => {
+                setIsLoading(false)
+                navigation.navigate('home')
+            }, 200);
         }
         catch (error) {
+            setIsLoading(false)
             console.log(error);
         }
     }
@@ -52,7 +58,7 @@ const EditPassword = ({ navigation }) => {
                     onChange={(e) => setConfPassword(e.nativeEvent.text)}
                 />
             </View>
-            <Button buttonStyle={styles.btnSave} onPress={handlerChangePassword}>
+            <Button loading={isLoading} buttonStyle={styles.btnSave} onPress={handlerChangePassword}>
                 Save Changes
             </Button>
         </View>
