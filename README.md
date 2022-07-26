@@ -2,6 +2,7 @@
 
 ### BUILT WITH
 
+![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/)
 [![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
 [![Postgres](https://img.shields.io/badge/postgres_sql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
@@ -10,6 +11,7 @@
 
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 [![ReactNative](https://img.shields.io/badge/react%20native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactnative.dev/)
+[![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
 
 ## Getting Started
 
@@ -37,9 +39,10 @@
     ```
     npx react-native run-android
 
-5. Open another terminal, change directory to **coffee-shop** then run
+6. Open another terminal, change directory to **coffee-shop** then run
     ```
     npm run startDev
+7. Coffe Shop App is Running
 
 ## PREVIEW
 <div>
