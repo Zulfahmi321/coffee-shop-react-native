@@ -4,6 +4,7 @@ export default StyleSheet.create({
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
+        margin: 20
     },
     titleContainer: {
         flex: 1,
@@ -63,4 +64,18 @@ export default StyleSheet.create({
         fontFamily: 'Poppins-Bold',
         fontSize: 17
     },
+    eye: {
+        color: 'black',
+        fontSize: 25
+    },
+    wrapperPassword: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottomColor: '#cccccc',
+        borderBottomWidth: 2,
+        alignSelf: 'center',
+        width: '80%'
+    }
 })

@@ -4,13 +4,13 @@ import google from '../../assets/icons/google-icon.png'
 import React, { useEffect, useState } from 'react'
 import { loginAction } from '../../redux/actionCreators/auth'
 import Toast from 'react-native-toast-message'
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles'
 import { Button } from '@rneui/themed'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Login = ({ navigation }) => {
-    // const [showPassword, setShowPassword] = useState(false)
+    const [showPass, setShowPass] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const { isLoading, errMsg, msg, isSuccess } = useSelector(state => state.auth)
@@ -64,9 +64,12 @@ const Login = ({ navigation }) => {
                     <TextInput style={styles.input} placeholder='Enter your email address' placeholderTextColor='#cccccc'
                         onChange={(e) => { setEmail(e.nativeEvent.text) }}
                     />
-                    <TextInput style={styles.input} placeholder='Enter your password' placeholderTextColor='#cccccc' secureTextEntry={true}
-                        onChange={(e) => { setPassword(e.nativeEvent.text) }}
-                    />
+                    <View style={styles.wrapperPassword}>
+                        <TextInput style={styles.input} placeholder='Enter your password' placeholderTextColor='#cccccc' secureTextEntry={showPass ? false : true}
+                            onChange={(e) => { setPassword(e.nativeEvent.text) }}
+                        />
+                        <Icon name={showPass ? 'eye-outline' : 'eye-off-outline'} style={styles.eye} onPress={() => setShowPass(!showPass)} />
+                    </View>
                     <Pressable onPress={() => navigation.navigate('forgot')}>
                         <Text style={styles.forgot}>Forgot password?</Text>
                     </Pressable>

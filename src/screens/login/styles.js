@@ -102,4 +102,18 @@ export default StyleSheet.create({
         fontFamily: 'Poppins-Regular',
         fontSize: 17
     },
+    eye: {
+        color: '#ffffff',
+        fontSize: 25
+    },
+    wrapperPassword: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottomColor: '#ffffff',
+        borderBottomWidth: 2,
+        alignSelf: 'center',
+        width: '100%'
+    }
 })

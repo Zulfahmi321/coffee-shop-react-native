@@ -36,4 +36,16 @@ export default StyleSheet.create({
         color: 'red',
         marginBottom: 10,
     },
+    eye: {
+        color: '#cccccc',
+        fontSize: 25
+    },
+    wrapperPassword: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        width: '100%'
+    }
 });

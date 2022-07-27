@@ -1,10 +1,12 @@
 import { View, Text, ImageBackground, TextInput, Pressable, Image } from 'react-native'
 import React, { useState } from 'react'
 import bg5 from '../../assets/img/vektor1.png'
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles'
 import { forgotPassword, resetPassword } from '../../modules/axios'
 const Forgot = () => {
+    const [showPass, setShowPass] = useState(false)
+    const [showPassCon, setShowPassCon] = useState(false)
     const [email, setEmail] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confPassword, setConfPassword] = useState('')
@@ -84,12 +86,18 @@ const Forgot = () => {
                             keyboardType='email-address'
                             onChange={(e) => setEmail(e.nativeEvent.text)}
                         />
-                        <TextInput style={styles.input} placeholder='Enter your password' placeholderTextColor='#cccccc' secureTextEntry={true}
-                            onChange={(e) => setNewPassword(e.nativeEvent.text)}
-                        />
-                        <TextInput style={styles.input} placeholder='Enter your new password' placeholderTextColor='#cccccc' secureTextEntry={true}
-                            onChange={(e) => setConfPassword(e.nativeEvent.text)}
-                        />
+                        <View style={styles.wrapperPassword}>
+                            <TextInput style={styles.input} placeholder='Enter your password' placeholderTextColor='#cccccc' secureTextEntry={showPass ? false : true}
+                                onChange={(e) => setNewPassword(e.nativeEvent.text)}
+                            />
+                            <Icon name={showPass ? 'eye-outline' : 'eye-off-outline'} style={styles.eye} onPress={() => setShowPass(!showPass)} />
+                        </View>
+                        <View style={styles.wrapperPassword}>
+                            <TextInput style={styles.input} placeholder='Enter your new password' placeholderTextColor='#cccccc' secureTextEntry={showPassCon ? false : true}
+                                onChange={(e) => setConfPassword(e.nativeEvent.text)}
+                            />
+                            <Icon name={showPassCon ? 'eye-outline' : 'eye-off-outline'} style={styles.eye} onPress={() => setShowPassCon(!showPassCon)} />
+                        </View>
                         <TextInput style={styles.input} placeholder='Enter your confirm code' placeholderTextColor='#cccccc'
                             onChange={(e) => setConfirmCode(e.nativeEvent.text)}
                         />
