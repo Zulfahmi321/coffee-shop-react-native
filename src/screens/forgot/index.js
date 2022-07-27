@@ -27,16 +27,30 @@ const Forgot = () => {
         try {
             if (newPassword !== confPassword) {
                 setErrMsg("Password & Password Confirm does not match")
-                console.log(errMsg);
+                // console.log(errMsg);
+                showToastError()
                 return
             }
             let body = { email, newPassword, confirmCode }
             const response = await resetPassword(body)
             console.log(response);
+            showToastSuccess()
         }
         catch (error) {
             console.log(error);
         }
+    }
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: errMsg
+        })
+    }
+    const showToastSuccess = () => {
+        Toast.show({
+            type: 'success',
+            text1: 'Success Reset Password'
+        })
     }
     return (
         <>
