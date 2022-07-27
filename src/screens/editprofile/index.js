@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { View, Image, Text, Pressable, TextInput, ScrollView, Modal } from 'react-native';
 import moment from 'moment';
 import { Button } from '@rneui/themed'
+import Toast from 'react-native-toast-message'
 // import { getProfileAxios, updateProfileAxios } from '../../modules/user';
 // import ModalNav from '../../components/ModalNav/ModalNav/index';
 import DatePicker from 'react-native-date-picker';
@@ -117,6 +118,7 @@ const EditProfile = ({ navigation }) => {
             // const body = { username, gender, mobile_number, date_of_birth, address }
             const response = await editProfile(newBody, config)
             console.log(response);
+            showToastSuccess()
             setTimeout(() => {
                 setIsLoading(false)
                 navigation.replace('home')
@@ -124,8 +126,21 @@ const EditProfile = ({ navigation }) => {
         }
         catch (error) {
             console.log(error);
+            showToastError()
             setIsLoading(false)
         }
+    }
+    const showToastSuccess = () => {
+        Toast.show({
+            type: 'success',
+            text1: 'Edit Profile Success'
+        })
+    }
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: 'Edit Profile Failed'
+        })
     }
     return (
         <ScrollView style={styles.container}>
@@ -207,6 +222,7 @@ const EditProfile = ({ navigation }) => {
                     loading={isLoading}
                     buttonStyle={styles.btnSave}
                 />
+                <Toast />
             </View>
             <Modal
                 visible={statusModal}

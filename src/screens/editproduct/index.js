@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import React, { useEffect, useState } from 'react'
 import Camera from '../../assets/img/camera.png'
 import { REACT_APP_BE, URL_DEPLOY } from '@env'
-
+import Toast from 'react-native-toast-message'
 import styles from './styles';
 import { editProduct } from '../../modules/axios';
 import { useSelector } from 'react-redux';
@@ -103,6 +103,7 @@ const EditProduct = ({ navigation, route }) => {
             const config = { headers: { Authorization: `Bearer ${token}`, "content-type": "multipart/form-data" } }
             const response = await editProduct(id, newBody, config)
             console.log(response);
+            showToastSuccess()
             setTimeout(() => {
                 setIsLoading(false)
                 navigation.replace('home')
@@ -111,7 +112,20 @@ const EditProduct = ({ navigation, route }) => {
         catch (error) {
             setIsLoading(false)
             console.log(error);
+            showToastError()
         }
+    }
+    const showToastSuccess = () => {
+        Toast.show({
+            type: 'success',
+            text1: 'Edit Product Success'
+        })
+    }
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: 'Edit Product Failed'
+        })
     }
     return (
         <>
@@ -214,6 +228,7 @@ const EditProduct = ({ navigation, route }) => {
                         Save Product
                     </Button>
                 </View>
+                <Toast />
             </ScrollView>
             <Modal
                 visible={statusModal}

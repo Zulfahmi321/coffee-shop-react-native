@@ -71,7 +71,7 @@ const AddPromo = ({ navigation }) => {
                     />
                 </View>
                 <View style={styles.inputBox}>
-                    <Text style={styles.labelStyle}>Discount</Text>
+                    <Text style={styles.labelStyle}>Discount %</Text>
                     <TextInput
                         placeholder="Input the promo discount"
                         placeholderTextColor="#9F9F9F"

@@ -3,7 +3,7 @@ import { Button } from '@rneui/themed'
 import Icon from 'react-native-vector-icons/Ionicons';
 import React, { useState } from 'react'
 import Camera from '../../assets/img/camera.png'
-
+import Toast from 'react-native-toast-message'
 import styles from './styles';
 import { addProduct } from '../../modules/axios';
 import { useSelector } from 'react-redux';
@@ -84,6 +84,7 @@ const AddProduct = ({ navigation }) => {
             const config = { headers: { Authorization: `Bearer ${token}`, "content-type": "multipart/form-data" } }
             const response = await addProduct(newBody, config)
             console.log(response);
+            showToastSuccess()
             setTimeout(() => {
                 setIsLoading(false)
                 navigation.replace('home')
@@ -91,8 +92,21 @@ const AddProduct = ({ navigation }) => {
         }
         catch (error) {
             setIsLoading(false)
+            showToastError()
             console.log(error);
         }
+    }
+    const showToastSuccess = () => {
+        Toast.show({
+            type: 'success',
+            text1: 'Add Product Success'
+        })
+    }
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: 'Add Product Failed'
+        })
     }
     return (
         <>
@@ -191,6 +205,7 @@ const AddProduct = ({ navigation }) => {
                         Save Product
                     </Button>
                 </View>
+                <Toast />
             </ScrollView>
             <Modal
                 visible={statusModal}

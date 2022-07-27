@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Button } from '@rneui/themed'
 
+import Toast from 'react-native-toast-message'
 import styles from './styles'
 import { changePassword } from '../../modules/axios'
 import { useSelector } from 'react-redux'
@@ -21,13 +22,14 @@ const EditPassword = ({ navigation }) => {
             setIsLoading(true)
             if (newPassword !== confPassword) {
                 setErrMsg("Password & Password Confirm does not match")
-                console.log(errMsg);
+                showToastError()
                 return
             }
             let body = { newPassword }
             const config = { headers: { Authorization: `Bearer ${token}` } }
             const response = await changePassword(body, config)
             console.log(response);
+            showToastSuccess()
             setTimeout(() => {
                 setIsLoading(false)
                 navigation.navigate('home')
@@ -37,6 +39,18 @@ const EditPassword = ({ navigation }) => {
             setIsLoading(false)
             console.log(error);
         }
+    }
+    const showToastSuccess = () => {
+        Toast.show({
+            type: 'success',
+            text1: 'Update Password Success'
+        })
+    }
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: errMsg
+        })
     }
     return (
         <View style={styles.container}>
@@ -66,6 +80,7 @@ const EditPassword = ({ navigation }) => {
             <Button loading={isLoading} buttonStyle={styles.btnSave} onPress={handlerChangePassword}>
                 Save Changes
             </Button>
+            <Toast />
         </View>
     )
 }
