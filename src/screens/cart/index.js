@@ -29,7 +29,7 @@ const Cart = ({ navigation }) => {
         <View style={styles.container}>
             <View style={styles.cartContainer}>
                 <View style={styles.cardProduct}>
-                    <Image source={ProdDef} style={styles.img} />
+                    <Image source={cart.photo ? { uri: cart.photo } : ProdDef} style={styles.img} />
                     <Text style={styles.price}>{currencyFormatter.format(cart.price)}</Text>
                 </View>
                 <View style={styles.rightCart}>

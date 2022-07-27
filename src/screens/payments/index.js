@@ -17,7 +17,7 @@ const Payments = ({ navigation }) => {
     const { cart } = useSelector(state => state.cart)
     const { token } = useSelector(state => state.auth)
     const { user } = useSelector(state => state.user)
-
+    // console.log(cart);
     const paymentHandler = async () => {
         try {
             setIsLoading(true)
@@ -50,7 +50,7 @@ const Payments = ({ navigation }) => {
                 <Text style={styles.subtitle}>Products</Text>
             </View>
             <View style={styles.card}>
-                <Image source={cart.picture ? { uri: cart.picture } : ProdDef} style={styles.img} />
+                <Image source={cart.photo ? { uri: cart.photo } : ProdDef} style={styles.img} />
                 <View style={styles.productInfo}>
                     <Text style={styles.item}>{cart.name ? cart.name : 'Hazelnut Latte'}</Text>
                     <Text style={styles.item}>{`x${cart.quantity}`}</Text>
