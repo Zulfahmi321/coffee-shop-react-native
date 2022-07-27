@@ -101,4 +101,23 @@ export default StyleSheet.create({
         backgroundColor: '#6A4029',
         borderRadius: 50
     },
+    viewModal2: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#CCC',
+        height: 200,
+        width: '80%',
+        borderRadius: 10,
+        marginTop: 200,
+        marginLeft: 40
+    },
+    wrapperInModal2: {
+        textAlign: 'center',
+        flexDirection: 'row',
+    },
+    titleLg: {
+        fontFamily: 'Poppins-Bold',
+        fontWeight: '700',
+        margin: 5
+    }
 })

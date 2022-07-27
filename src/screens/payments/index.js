@@ -2,6 +2,7 @@ import { View, Text, ScrollView, Image, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import Toast from 'react-native-toast-message'
 import { useSelector, useDispatch } from 'react-redux';
 import ProdDef from '../../assets/img/coldbrew.png'
 import styles from './styles'
@@ -21,6 +22,9 @@ const Payments = ({ navigation }) => {
 
     const paymentHandler = async () => {
         try {
+            if (!payment) {
+                return showToastError()
+            }
             setIsLoading(true)
             const body = {
                 product_id: cart.id,
@@ -44,6 +48,12 @@ const Payments = ({ navigation }) => {
             console.log(error)
             setIsLoading(false)
         }
+    }
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: 'Choose Payment Method'
+        })
     }
     return (
         <View style={styles.container}>
@@ -82,6 +92,7 @@ const Payments = ({ navigation }) => {
             <Button loading={isLoading} buttonStyle={styles.paymentBtn} onPress={paymentHandler}>
                 <Text style={styles.paymentTxt}>Proceed payment</Text>
             </Button>
+            <Toast />
         </View>
     )
 }

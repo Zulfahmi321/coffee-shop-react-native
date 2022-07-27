@@ -23,6 +23,7 @@ const Home = ({ navigation, ...props }) => {
     const { token } = useSelector(state => state.auth)
     const { user } = useSelector(state => state.user)
     const [statusModal, setStatusModal] = useState(false)
+    const [statusModalLg, setStatusModalLg] = useState(false)
 
     const handlerDrawer = () => drawerRef.current.openDrawer()
 
@@ -86,7 +87,7 @@ const Home = ({ navigation, ...props }) => {
                         <Text style={styles.menuText}>Security</Text>
                     </View>
                 </View>
-                <Pressable style={styles.menuList} onPress={() => dispatch(logoutAction(navigation.navigate('login')))} >
+                <Pressable style={styles.menuList} onPress={() => setStatusModalLg(true)} >
                     <Icon name="log-out-outline" size={35}></Icon>
                     <Text style={styles.menuText}>Logout</Text>
                 </Pressable>
@@ -163,6 +164,23 @@ const Home = ({ navigation, ...props }) => {
                     >
                         <Icon name='close-circle-outline' size={30} color="#FFBA33" />
                     </Button>
+                </View>
+            </Modal>
+            <Modal
+                visible={statusModalLg}
+                transparent={true}
+                animationType='fade'
+            >
+                <View style={styles.viewModal2}>
+                    <Text style={styles.titleLg}>Do You Want To Logout?</Text>
+                    <View style={styles.wrapperInModal2}>
+                        <Pressable style={styles.chooseBtn} onPress={() => dispatch(logoutAction(navigation.navigate('login')))}>
+                            <Icon name='checkmark-outline' size={30} />
+                        </Pressable>
+                        <Pressable style={styles.chooseBtn} onPress={() => setStatusModalLg(false)}>
+                            <Icon name='close-outline' size={30} />
+                        </Pressable>
+                    </View>
                 </View>
             </Modal>
         </DrawerLayout>

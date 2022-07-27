@@ -2,6 +2,7 @@ import { View, Text, TextInput, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import Toast from 'react-native-toast-message'
 import ProdDef from '../../assets/img/coldbrew.png'
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './styles'
@@ -14,9 +15,18 @@ const DeliveryMethods = ({ navigation }) => {
     const dispatch = useDispatch()
 
     const proceedHandler = () => {
+        if (!delivery) {
+            return showToastError()
+        }
         const newProduct = { ...cart, delivery }
         dispatch(addProductAction(newProduct))
         navigation.replace('payments')
+    }
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: 'Choose Delivery Method'
+        })
     }
     return (
         <View style={styles.container}>
@@ -55,6 +65,7 @@ const DeliveryMethods = ({ navigation }) => {
             <Pressable style={styles.paymentBtn} onPress={proceedHandler}>
                 <Text style={styles.paymentTxt}>Proceed to payment</Text>
             </Pressable>
+            <Toast />
         </View>
     )
 }

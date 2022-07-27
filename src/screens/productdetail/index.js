@@ -5,6 +5,7 @@ import ProdDef from '../../assets/img/coldbrew.png'
 import { Button } from '@rneui/themed'
 import { REACT_APP_BE, URL_DEPLOY } from '@env'
 
+import Toast from 'react-native-toast-message'
 import styles from './styles'
 import axios from 'axios';
 import { currencyFormatter } from '../../helpers/formatter';
@@ -39,10 +40,20 @@ const ProductDetail = ({ navigation, route }) => {
     }, [route.params.id])
 
     const handlerAddToCart = () => {
+        if (!size) {
+            return showToastError()
+        }
         const newProduct = { ...product, size }
         dispatch(addProductAction(newProduct))
         navigation.replace('cart')
         // console.log(newProduct);
+    }
+
+    const showToastError = () => {
+        Toast.show({
+            type: 'error',
+            text1: 'Choose Size'
+        })
     }
 
     return (
@@ -98,6 +109,7 @@ const ProductDetail = ({ navigation, route }) => {
                     </Button>
                 }
             </View>
+            <Toast />
         </View>
     )
 }

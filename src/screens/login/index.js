@@ -25,6 +25,7 @@ const Login = ({ navigation }) => {
             })
             .catch((error) => {
                 console.log(error);
+                showToastError2()
             })
     }
     const showToastSuccess = () => {
@@ -37,6 +38,12 @@ const Login = ({ navigation }) => {
         Toast.show({
             type: 'error',
             text1: errMsg
+        })
+    }
+    const showToastError2 = () => {
+        Toast.show({
+            type: 'error',
+            text1: ' Wrong Password Or Email'
         })
     }
     useEffect(() => {
