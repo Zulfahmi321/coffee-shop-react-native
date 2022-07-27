@@ -18,6 +18,7 @@ const Payments = ({ navigation }) => {
     const { token } = useSelector(state => state.auth)
     const { user } = useSelector(state => state.user)
     // console.log(cart);
+
     const paymentHandler = async () => {
         try {
             setIsLoading(true)
