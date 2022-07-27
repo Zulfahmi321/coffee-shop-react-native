@@ -174,7 +174,7 @@ const Home = ({ navigation, ...props }) => {
                 <View style={styles.viewModal2}>
                     <Text style={styles.titleLg}>Do You Want To Logout?</Text>
                     <View style={styles.wrapperInModal2}>
-                        <Pressable style={styles.chooseBtn} onPress={() => dispatch(logoutAction(navigation.navigate('login')))}>
+                        <Pressable style={styles.chooseBtn} onPress={() => dispatch(logoutAction(navigation.replace('login')))}>
                             <Icon name='checkmark-outline' size={30} />
                         </Pressable>
                         <Pressable style={styles.chooseBtn} onPress={() => setStatusModalLg(false)}>
